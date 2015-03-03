@@ -43,10 +43,19 @@
 		echo "<h4>$busNumber</h4>";
 		echo "<ul>";
 		foreach ($predictionsArray as $prediction) {
-			echo "<li>$prediction</li>";
+			echo '<li>' . formatSeconds($prediction) . '</li>';
 		}
 		echo "</ul>";
 	}
+
+	function formatSeconds($seconds){
+		//convert $seconds into an interval
+		$intseconds = intval ($seconds);
+		$sec = $intseconds % 60;
+		$min = ($intseconds - $sec )/ 60;
+		return $min.'m '.$sec.'s ('.$seconds.'s)';
+	}
+
 ?>
 
 <html>
