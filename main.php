@@ -1,7 +1,9 @@
 <?php
 	
 	function getPredictionForStop($apiKey, $queryParams) {
-		return file_get_contents("http://realtime.mbta.com/developer/api/v2/predictionsbystop?api_key=$apiKey&format=json&$queryParams");
+		return json_decode(
+			file_get_contents("http://realtime.mbta.com/developer/api/v2/predictionsbystop?api_key=$apiKey&format=json&$queryParams"), 
+			true);
 	}
 
 	function parsePredictions($json, $directionId, $busNumber) {
@@ -58,17 +60,29 @@
 		$apiKey = 'wX9NwuHnZU2ToO7GmGR9uw';
 		$bus87 = '87';
 		$bus88 = '88';
+		$inboundId = "1";
 		$outboundId = "0";
 
 		echo '<h2>To work</h2>';
 		// bus 87
+		$beechStopId = '2584';
+		$jsonPredictions = getPredictionForStop($apiKey, "stop=$beechStopId");
+		// parse predictions
+		$predictions = parsePredictions($jsonPredictions, $inboundId, $bus87);
+		// print predictions
+		printPredictions($bus87, $predictions);
 
 		// bus 88
+		$willowStopId = '2675';
+		$jsonPredictions = getPredictionForStop($apiKey, "stop=$willowStopId");
+		// parse predictions
+		$predictions = parsePredictions($jsonPredictions, $inboundId, $bus88);
+		// print predictions
+		printPredictions($bus88, $predictions);
 
 		echo '<h2>Home!</h2>';
 		$lechmereStopId = '14150';
-		$predictions = getPredictionForStop($apiKey, "stop=$lechmereStopId");
-		$jsonPredictions = json_decode($predictions, true);
+		$jsonPredictions = getPredictionForStop($apiKey, "stop=$lechmereStopId");
 
 		// bus 87
 		// parse predictions
