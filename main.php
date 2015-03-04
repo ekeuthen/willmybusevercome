@@ -42,6 +42,9 @@
 	function printPredictions($busNumber, $predictionsArray) {
 		echo "<h4>$busNumber</h4>";
 		echo "<ul class='list-group'>";
+		if (empty($predictionsArray)) {
+			echo '<li class="list-group-item"><span class="badge">!</span>' . 'Please start walking - no buses in the foreseeable future!' . '</li>';
+		}
 		foreach ($predictionsArray as $prediction) {
 			echo '<li class="list-group-item">' . formatSeconds($prediction) . '</li>';
 		}
@@ -81,6 +84,10 @@
 		$bus88 = '88';
 		$inboundId = "1";
 		$outboundId = "0";
+
+		echo "<div class='page-header'>
+  				<h1>Will Bus Ever Come?</h1>
+			</div>";
 
 		echo '<h2>To work</h2>';
 		// bus 87
