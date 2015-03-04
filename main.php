@@ -41,9 +41,9 @@
 
 	function printPredictions($busNumber, $predictionsArray) {
 		echo "<h4>$busNumber</h4>";
-		echo "<ul>";
+		echo "<ul class='list-group'>";
 		foreach ($predictionsArray as $prediction) {
-			echo '<li>' . formatSeconds($prediction) . '</li>';
+			echo '<li class="list-group-item">' . formatSeconds($prediction) . '</li>';
 		}
 		echo "</ul>";
 	}
@@ -53,7 +53,7 @@
 		$intseconds = intval ($seconds);
 		$sec = $intseconds % 60;
 		$min = ($intseconds - $sec )/ 60;
-		return $min.'m '.$sec.'s ('.$seconds.'s)';
+		return $min.' min '.$sec.' sec';
 	}
 
 ?>
@@ -61,11 +61,21 @@
 <html>
 	<head>
 		<title>Will Bus Ever Come</title>
+
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	</head>
 
 	<body>
 
 	<?php
+		//need to replace API key with personal API key
 		$apiKey = 'wX9NwuHnZU2ToO7GmGR9uw';
 		$bus87 = '87';
 		$bus88 = '88';
