@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 <?php
 	
@@ -66,6 +66,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Will Bus Ever Come</title>
 
 		<!-- Latest compiled and minified CSS -->
