@@ -1,3 +1,5 @@
+<!doctype html>
+
 <?php
 	
 	function getPredictionForStop($apiKey, $queryParams) {
@@ -61,8 +63,9 @@
 
 ?>
 
-<html>
+<html lang="en">
 	<head>
+		<meta charset="utf-8">
 		<title>Will Bus Ever Come</title>
 
 		<!-- Latest compiled and minified CSS -->
@@ -78,49 +81,52 @@
 	<body>
 
 	<?php
-		//need to replace API key with personal API key
-		$apiKey = 'wX9NwuHnZU2ToO7GmGR9uw';
+		$apiKey = 'OCarOTQ4MkihZKLn-9Iojg';
 		$bus87 = '87';
 		$bus88 = '88';
 		$inboundId = "1";
 		$outboundId = "0";
 
-		echo "<div class='page-header'>
-  				<h1>Will Bus Ever Come?</h1>
-			</div>";
+		echo "<div class='container'>";
 
-		echo '<h2>To work</h2>';
-		// bus 87
-		$beechStopId = '2584';
-		$jsonPredictions = getPredictionForStop($apiKey, "stop=$beechStopId");
-		// parse predictions
-		$predictions = parsePredictions($jsonPredictions, $inboundId, $bus87);
-		// print predictions
-		printPredictions($bus87, $predictions);
+			echo "<div class='page-header'>
+	  				<h1>Will Bus Ever Come?</h1>
+				</div>";
 
-		// bus 88
-		$willowStopId = '2675';
-		$jsonPredictions = getPredictionForStop($apiKey, "stop=$willowStopId");
-		// parse predictions
-		$predictions = parsePredictions($jsonPredictions, $inboundId, $bus88);
-		// print predictions
-		printPredictions($bus88, $predictions);
+			echo '<h2>To work</h2>';
+			// bus 87
+			$beechStopId = '2584';
+			$jsonPredictions = getPredictionForStop($apiKey, "stop=$beechStopId");
+			// parse predictions
+			$predictions = parsePredictions($jsonPredictions, $inboundId, $bus87);
+			// print predictions
+			printPredictions($bus87, $predictions);
 
-		echo '<h2>Home!</h2>';
-		$lechmereStopId = '14150';
-		$jsonPredictions = getPredictionForStop($apiKey, "stop=$lechmereStopId");
+			// bus 88
+			$willowStopId = '2675';
+			$jsonPredictions = getPredictionForStop($apiKey, "stop=$willowStopId");
+			// parse predictions
+			$predictions = parsePredictions($jsonPredictions, $inboundId, $bus88);
+			// print predictions
+			printPredictions($bus88, $predictions);
 
-		// bus 87
-		// parse predictions
-		$predictions = parsePredictions($jsonPredictions, $outboundId, $bus87);
-		// print predictions
-		printPredictions($bus87, $predictions);
+			echo '<h2>Home!</h2>';
+			$lechmereStopId = '14150';
+			$jsonPredictions = getPredictionForStop($apiKey, "stop=$lechmereStopId");
 
-		// bus 88
-		// parse predictions
-		$predictions = parsePredictions($jsonPredictions, $outboundId, $bus88);
-		// print predictions
-		printPredictions($bus88, $predictions);
+			// bus 87
+			// parse predictions
+			$predictions = parsePredictions($jsonPredictions, $outboundId, $bus87);
+			// print predictions
+			printPredictions($bus87, $predictions);
+
+			// bus 88
+			// parse predictions
+			$predictions = parsePredictions($jsonPredictions, $outboundId, $bus88);
+			// print predictions
+			printPredictions($bus88, $predictions);
+
+		echo "</div>";
 	?>
  	</body>
  </html>
