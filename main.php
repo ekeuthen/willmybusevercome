@@ -82,6 +82,7 @@
 
 	<?php
 		$apiKey = 'OCarOTQ4MkihZKLn-9Iojg';
+		$bus69 = '69';
 		$bus87 = '87';
 		$bus88 = '88';
 		$inboundId = "1";
@@ -94,6 +95,15 @@
 				</div>";
 
 			echo '<h2>To work</h2>';
+
+			// bus 69
+			$johnstonStopId = '2168';
+			$jsonPredictions = getPredictionForStop($apiKey, "stop=$johnstonStopId");
+			// parse predictions
+			$predictions = parsePredictions($jsonPredictions, $inboundId, $bus69);
+			// print predictions
+			printPredictions($bus69, $predictions);
+
 			// bus 87
 			$beechStopId = '2584';
 			$jsonPredictions = getPredictionForStop($apiKey, "stop=$beechStopId");
@@ -113,6 +123,12 @@
 			echo '<h2>Home!</h2>';
 			$lechmereStopId = '14150';
 			$jsonPredictions = getPredictionForStop($apiKey, "stop=$lechmereStopId");
+
+			// bus 69
+			// parse predictions
+			$predictions = parsePredictions($jsonPredictions, $outboundId, $bus69);
+			// print predictions
+			printPredictions($bus69, $predictions);
 
 			// bus 87
 			// parse predictions
